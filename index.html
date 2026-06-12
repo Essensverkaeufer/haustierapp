@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Haustier-App</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <main class="app">
+    <section class="top">
+      <aside class="menu">
+        <h1>Haustiere</h1>
+        <select id="petSelect">
+          <option value="parrot">Papagei</option>
+          <option value="cat">Katze</option>
+          <option value="dog">Hund</option>
+        </select>
+        <p>...</p>
+        <p>...</p>
+        <p>...</p>
+      </aside>
+
+      <section class="bars">
+        <div class="bar blue"><span id="hungerBar"></span></div>
+        <div class="bar green"><span id="energyBar"></span></div>
+        <div class="bar yellow"><span id="moodBar"></span></div>
+        <div class="bar red"><span id="cleanlinessBar"></span></div>
+      </section>
+    </section>
+
+    <section class="pet-area">
+      <div class="bubble" id="message">Hallo!</div>
+      <div class="pet" id="petEmoji">🦜</div>
+      <h2 id="petName">Papagei</h2>
+    </section>
+
+    <section class="values">
+      <p>Hunger: <b id="hungerValue"></b></p>
+      <p>Energie: <b id="energyValue"></b></p>
+      <p>Laune: <b id="moodValue"></b></p>
+      <p>Sauberkeit: <b id="cleanlinessValue"></b></p>
+    </section>
+
+    <section class="buttons">
+      <button id="feedBtn" title="Füttern">🍎</button>
+      <button id="playBtn" title="Spielen">🎾</button>
+      <button id="sleepBtn" title="Schlafen">💤</button>
+      <button id="cleanBtn" title="Waschen">🧼</button>
+      <button id="saveBtn" title="Speichern">💾</button>
+      <button id="resetBtn" title="Reset">↺</button>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
