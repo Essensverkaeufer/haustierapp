@@ -9,47 +9,64 @@
 </head>
 <body>
   <main class="app">
-    <section class="top">
-      <aside class="menu">
-        <h1>Haustiere</h1>
+    <header>
+      <h1>Haustier-App</h1>
+      <p>Digitales Haustier</p>
+    </header>
+
+    <section class="layout">
+      <aside class="box menu">
+        <h2>Haustiere</h2>
+        <label for="petSelect">Auswahl:</label>
         <select id="petSelect">
           <option value="parrot">Papagei</option>
           <option value="cat">Katze</option>
           <option value="dog">Hund</option>
         </select>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
       </aside>
 
-      <section class="bars">
-        <div class="bar blue"><span id="hungerBar"></span></div>
-        <div class="bar green"><span id="energyBar"></span></div>
-        <div class="bar yellow"><span id="moodBar"></span></div>
-        <div class="bar red"><span id="cleanlinessBar"></span></div>
+      <section class="box pet-area">
+        <div class="status" id="message">Hallo!</div>
+        <pre class="pet-drawing" id="petDrawing"></pre>
+        <h2 id="petName">Papagei</h2>
       </section>
     </section>
 
-    <section class="pet-area">
-      <div class="bubble" id="message">Hallo!</div>
-      <div class="pet" id="petEmoji">🦜</div>
-      <h2 id="petName">Papagei</h2>
+    <section class="box values">
+      <h2>Werte</h2>
+
+      <div class="value-row">
+        <span>Hunger</span>
+        <div class="bar"><span id="hungerBar"></span></div>
+        <strong id="hungerValue">0</strong>
+      </div>
+
+      <div class="value-row">
+        <span>Energie</span>
+        <div class="bar"><span id="energyBar"></span></div>
+        <strong id="energyValue">0</strong>
+      </div>
+
+      <div class="value-row">
+        <span>Laune</span>
+        <div class="bar"><span id="moodBar"></span></div>
+        <strong id="moodValue">0</strong>
+      </div>
+
+      <div class="value-row">
+        <span>Sauberkeit</span>
+        <div class="bar"><span id="cleanlinessBar"></span></div>
+        <strong id="cleanlinessValue">0</strong>
+      </div>
     </section>
 
-    <section class="values">
-      <p>Hunger: <b id="hungerValue"></b></p>
-      <p>Energie: <b id="energyValue"></b></p>
-      <p>Laune: <b id="moodValue"></b></p>
-      <p>Sauberkeit: <b id="cleanlinessValue"></b></p>
-    </section>
-
-    <section class="buttons">
-      <button id="feedBtn" title="Füttern">🍎</button>
-      <button id="playBtn" title="Spielen">🎾</button>
-      <button id="sleepBtn" title="Schlafen">💤</button>
-      <button id="cleanBtn" title="Waschen">🧼</button>
-      <button id="saveBtn" title="Speichern">💾</button>
-      <button id="resetBtn" title="Reset">↺</button>
+    <section class="box buttons">
+      <button id="feedBtn">Fuettern</button>
+      <button id="playBtn">Spielen</button>
+      <button id="sleepBtn">Schlafen</button>
+      <button id="cleanBtn">Waschen</button>
+      <button id="saveBtn">Speichern</button>
+      <button id="resetBtn">Reset</button>
     </section>
   </main>
 
