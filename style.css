@@ -10,11 +10,12 @@ body {
   color: #111;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  padding: 20px 0;
 }
 
 .app {
-  width: min(94vw, 760px);
+  width: min(94vw, 860px);
   background: #eeeeee;
   border: 2px solid #111;
   padding: 14px;
@@ -39,7 +40,7 @@ header p {
 
 .layout {
   display: grid;
-  grid-template-columns: 220px 1fr;
+  grid-template-columns: 230px 1fr;
   gap: 12px;
 }
 
@@ -49,9 +50,20 @@ header p {
   padding: 12px;
 }
 
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
 h2 {
-  margin: 0 0 10px;
+  margin-bottom: 10px;
   font-size: 20px;
+}
+
+h3 {
+  margin-bottom: 8px;
+  font-size: 16px;
 }
 
 .menu label {
@@ -68,8 +80,27 @@ select {
   font-size: 15px;
 }
 
+.menu-panel {
+  border-top: 2px solid #111;
+  margin-top: 12px;
+  padding-top: 10px;
+}
+
+.summary-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  margin: 6px 0;
+  font-size: 14px;
+}
+
+.request-panel p {
+  margin-bottom: 0;
+  line-height: 1.35;
+}
+
 .pet-area {
-  min-height: 250px;
+  min-height: 310px;
   text-align: center;
   background: #ffffff;
 }
@@ -81,27 +112,57 @@ select {
   padding: 8px 12px;
   margin-bottom: 12px;
   font-weight: bold;
+  min-height: 38px;
 }
 
-.pet-drawing {
-  display: inline-block;
-  text-align: left;
-  font-family: "Courier New", monospace;
-  font-size: 20px;
-  line-height: 1.1;
-  margin: 8px 0;
-  padding: 12px;
-  border: 1px solid #777;
+.pet-frame {
+  width: min(100%, 390px);
+  height: 230px;
+  margin: 0 auto 10px;
+  border: 2px solid #111;
   background: #f2f2f2;
+  padding: 6px;
 }
 
-.values {
+.pet-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #ddd;
+}
+
+.pet-image.dog {
+  object-position: center 42%;
+}
+
+.pet-image.cat {
+  object-position: center center;
+}
+
+.pet-image.parrot {
+  object-position: center 36%;
+}
+
+.pet-frame.pulse {
+  animation: petPulse 0.38s linear;
+}
+
+.pet-frame.sleepy {
+  animation: sleepy 0.7s linear;
+}
+
+.values,
+.buttons,
+.battlepass,
+.shop,
+.achievements {
   margin-top: 12px;
 }
 
 .value-row {
   display: grid;
-  grid-template-columns: 90px 1fr 42px;
+  grid-template-columns: 100px 1fr 42px;
   gap: 8px;
   align-items: center;
   margin: 8px 0;
@@ -121,8 +182,31 @@ select {
   transition: width 0.2s;
 }
 
+#hungerBar {
+  background: #b9483f;
+}
+
+#energyBar {
+  background: #2f6fb2;
+}
+
+#moodBar {
+  background: #b28a1d;
+}
+
+#cleanlinessBar {
+  background: #2d8469;
+}
+
+#bondBar {
+  background: #6b56a8;
+}
+
+#passBar {
+  background: #111;
+}
+
 .buttons {
-  margin-top: 12px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
@@ -131,26 +215,357 @@ select {
 button {
   border: 2px solid #111;
   background: #dddddd;
+  color: #111;
   padding: 10px;
   font-size: 15px;
   font-weight: bold;
   cursor: pointer;
 }
 
-button:hover {
+button:hover:not(:disabled) {
   background: #c8c8c8;
 }
 
-button:active {
+button:active:not(:disabled) {
   background: #aaaaaa;
 }
 
+button:disabled {
+  color: #777;
+  cursor: not-allowed;
+  background: #eeeeee;
+}
+
+.item-list {
+  display: grid;
+  gap: 0;
+  border-top: 2px solid #111;
+}
+
+.pass-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: start;
+}
+
+.pass-head p {
+  margin-bottom: 0;
+  line-height: 1.35;
+}
+
+.pass-level {
+  display: inline-block;
+  border: 2px solid #111;
+  background: #e3e3e3;
+  padding: 8px 10px;
+  white-space: nowrap;
+}
+
+.pass-progress {
+  display: grid;
+  grid-template-columns: 1fr 70px;
+  gap: 8px;
+  align-items: center;
+  margin: 12px 0;
+}
+
+.mission-list {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.mission-row {
+  display: grid;
+  grid-template-columns: 1fr 56px 86px;
+  gap: 8px;
+  align-items: center;
+  border: 2px solid #111;
+  background: #ffffff;
+  padding: 8px;
+  font-size: 14px;
+}
+
+.mission-row em {
+  font-style: normal;
+  text-align: right;
+}
+
+.mission-row.completed {
+  background: #e3e3e3;
+}
+
+.pass-track {
+  display: grid;
+  gap: 0;
+  border-top: 2px solid #111;
+}
+
+.pass-tier {
+  display: grid;
+  grid-template-columns: 78px 1fr 190px 110px;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 2px solid #111;
+}
+
+.pass-tier.locked {
+  color: #777;
+}
+
+.pass-tier.claimable {
+  background: #ffffff;
+}
+
+.pass-tier.claimed {
+  background: #e3e3e3;
+}
+
+.item-row {
+  display: grid;
+  grid-template-columns: 1fr 92px 104px 104px;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 2px solid #111;
+}
+
+.item-name {
+  display: block;
+  font-weight: bold;
+}
+
+.item-desc {
+  display: block;
+  margin-top: 3px;
+  font-size: 13px;
+}
+
+.item-meta {
+  font-size: 13px;
+  text-align: right;
+}
+
+.badge-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.badge {
+  border: 2px solid #111;
+  background: #e3e3e3;
+  padding: 7px 9px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.badge.locked {
+  background: #f1f1f1;
+  color: #777;
+  border-color: #777;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.hidden {
+  display: none !important;
+}
+
+.modal-card {
+  width: min(94vw, 620px);
+  max-height: 92vh;
+  overflow: auto;
+  background: #f7f7f7;
+}
+
+.modal-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: start;
+  border-bottom: 2px solid #111;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+}
+
+.small-button {
+  padding: 7px 9px;
+  font-size: 13px;
+}
+
+.game-help {
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.game-content {
+  min-height: 130px;
+}
+
+.game-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.game-score {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.timing-track {
+  position: relative;
+  height: 38px;
+  border: 2px solid #111;
+  background: white;
+  overflow: hidden;
+}
+
+.target-zone {
+  position: absolute;
+  left: 42%;
+  top: 0;
+  width: 16%;
+  height: 100%;
+  background: #b8d79d;
+  border-left: 2px solid #111;
+  border-right: 2px solid #111;
+}
+
+.timing-marker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 100%;
+  background: #111;
+  transform: translateX(-4px);
+}
+
+.cat-stage {
+  position: relative;
+  height: 260px;
+  border: 2px solid #111;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.mouse-target {
+  position: absolute;
+  width: 46px;
+  height: 34px;
+  padding: 0;
+  line-height: 1;
+}
+
+.echo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.echo-btn {
+  min-height: 64px;
+}
+
+.echo-btn.active {
+  background: #111;
+  color: white;
+}
+
+.echo-btn[data-echo="red"] {
+  border-color: #8f2e2e;
+}
+
+.echo-btn[data-echo="blue"] {
+  border-color: #2f5d9c;
+}
+
+.echo-btn[data-echo="yellow"] {
+  border-color: #8c6f12;
+}
+
+.echo-btn[data-echo="green"] {
+  border-color: #2f6f4a;
+}
+
+@keyframes petPulse {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes sleepy {
+  0% {
+    filter: brightness(1);
+  }
+
+  50% {
+    filter: brightness(0.72);
+  }
+
+  100% {
+    filter: brightness(1);
+  }
+}
+
 @media (max-width: 650px) {
+  body {
+    padding: 10px 0;
+  }
+
   .layout {
     grid-template-columns: 1fr;
   }
 
   .buttons {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .item-row {
+    grid-template-columns: 1fr;
+  }
+
+  .pass-head,
+  .mission-row,
+  .pass-tier {
+    grid-template-columns: 1fr;
+  }
+
+  .pass-progress {
+    grid-template-columns: 1fr;
+  }
+
+  .mission-row em {
+    text-align: left;
+  }
+
+  .item-meta {
+    text-align: left;
+  }
+
+  .pet-frame {
+    height: 210px;
   }
 }

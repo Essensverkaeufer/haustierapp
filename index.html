@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Haustier-App</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
   <main class="app">
@@ -23,11 +22,42 @@
           <option value="cat">Katze</option>
           <option value="dog">Hund</option>
         </select>
+
+        <div class="menu-panel">
+          <h3>Fortschritt</h3>
+          <div class="summary-row">
+            <span>Muenzen</span>
+            <strong id="coinsValue">0</strong>
+          </div>
+          <div class="summary-row">
+            <span>Serie</span>
+            <strong id="streakValue">0</strong>
+          </div>
+          <div class="summary-row">
+            <span>Level</span>
+            <strong id="levelValue">1</strong>
+          </div>
+          <div class="summary-row">
+            <span>XP</span>
+            <strong id="xpValue">0/60</strong>
+          </div>
+          <div class="summary-row">
+            <span>Battlepass</span>
+            <strong id="passSummaryValue">1</strong>
+          </div>
+        </div>
+
+        <div class="menu-panel request-panel">
+          <h3>Aufgabe</h3>
+          <p id="requestText">Keine Aufgabe offen.</p>
+        </div>
       </aside>
 
       <section class="box pet-area">
         <div class="status" id="message">Hallo!</div>
-        <pre class="pet-drawing" id="petDrawing"></pre>
+        <div class="pet-frame" id="petFrame">
+          <img class="pet-image" id="petImage" src="assets/parrot.png" alt="Papagei" />
+        </div>
         <h2 id="petName">Papagei</h2>
       </section>
     </section>
@@ -58,6 +88,12 @@
         <div class="bar"><span id="cleanlinessBar"></span></div>
         <strong id="cleanlinessValue">0</strong>
       </div>
+
+      <div class="value-row">
+        <span>Bindung</span>
+        <div class="bar"><span id="bondBar"></span></div>
+        <strong id="bondValue">0</strong>
+      </div>
     </section>
 
     <section class="box buttons">
@@ -68,7 +104,51 @@
       <button id="saveBtn">Speichern</button>
       <button id="resetBtn">Reset</button>
     </section>
+
+    <section class="box battlepass">
+      <div class="pass-head">
+        <div>
+          <h2>Battlepass</h2>
+          <p id="passSubtitle">Global fuer alle Haustiere. Kostenlos, aber sehr offiziell.</p>
+        </div>
+        <strong class="pass-level" id="passLevelBadge">Stufe 1</strong>
+      </div>
+
+      <div class="pass-progress">
+        <div class="bar pass-bar"><span id="passBar"></span></div>
+        <strong id="passXpValue">0/90</strong>
+      </div>
+
+      <div class="pass-missions">
+        <h3>Tagesaufgaben</h3>
+        <div class="mission-list" id="passMissionList"></div>
+      </div>
+
+      <div class="pass-track" id="battlepassTrack"></div>
+    </section>
+
+    <section class="box shop">
+      <h2>Shop & Inventar</h2>
+      <div class="item-list" id="itemList"></div>
+    </section>
+
+    <section class="box achievements">
+      <h2>Erfolge</h2>
+      <div class="badge-list" id="achievementList"></div>
+    </section>
   </main>
+
+  <div class="modal hidden" id="gameModal" aria-hidden="true">
+    <section class="modal-card box" role="dialog" aria-modal="true" aria-labelledby="gameTitle">
+      <div class="modal-head">
+        <h2 id="gameTitle">Minispiel</h2>
+        <button class="small-button" id="closeGameBtn">Schliessen</button>
+      </div>
+      <p class="game-help" id="gameHelp"></p>
+      <div class="game-content" id="gameContent"></div>
+      <div class="game-actions" id="gameActions"></div>
+    </section>
+  </div>
 
   <script src="script.js"></script>
 </body>
