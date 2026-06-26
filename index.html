@@ -1,28 +1,36 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+  <!-- Grundeinstellungen der Webseite: Zeichensatz, Handy-Ansicht und Titel. -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Haustier-App</title>
+
+  <!-- Bindet die CSS-Datei ein. Dort steht, wie die App aussieht. -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Hauptbereich der App. -->
   <main class="app">
     <header>
       <h1>Haustier-App</h1>
       <p>Digitales Haustier</p>
     </header>
 
+    <!-- Layout-Bereich: links das Menue, rechts das Haustier. -->
     <section class="layout">
       <aside class="box menu">
         <h2>Haustiere</h2>
         <label for="petSelect">Auswahl:</label>
+
+        <!-- Dropdown-Menue zum Wechseln zwischen den Haustieren. -->
         <select id="petSelect">
           <option value="parrot">Papagei</option>
           <option value="cat">Katze</option>
           <option value="dog">Hund</option>
         </select>
 
+        <!-- Zeigt den aktuellen Fortschritt des Spielers an. -->
         <div class="menu-panel">
           <h3>Fortschritt</h3>
           <div class="summary-row">
@@ -47,12 +55,14 @@
           </div>
         </div>
 
+        <!-- Hier wird die aktuelle Aufgabe angezeigt. -->
         <div class="menu-panel request-panel">
           <h3>Aufgabe</h3>
           <p id="requestText">Keine Aufgabe offen.</p>
         </div>
       </aside>
 
+      <!-- Bereich fuer Haustierbild, Namen und kurze Nachrichten. -->
       <section class="box pet-area">
         <div class="status" id="message">Hallo!</div>
         <div class="pet-frame" id="petFrame">
@@ -62,6 +72,7 @@
       </section>
     </section>
 
+    <!-- Werte des Haustiers. Die Balken werden spaeter durch JavaScript gefuellt. -->
     <section class="box values">
       <h2>Werte</h2>
 
@@ -96,6 +107,7 @@
       </div>
     </section>
 
+    <!-- Buttons fuer Aktionen wie Fuettern, Spielen oder Speichern. -->
     <section class="box buttons">
       <button id="feedBtn">Fuettern</button>
       <button id="playBtn">Spielen</button>
@@ -105,6 +117,7 @@
       <button id="resetBtn">Reset</button>
     </section>
 
+    <!-- Battlepass-Bereich mit Level, Fortschritt und Tagesaufgaben. -->
     <section class="box battlepass">
       <div class="pass-head">
         <div>
@@ -119,25 +132,30 @@
         <strong id="passXpValue">0/90</strong>
       </div>
 
+      <!-- Liste der Tagesaufgaben wird per JavaScript eingefuegt. -->
       <div class="pass-missions">
         <h3>Tagesaufgaben</h3>
         <div class="mission-list" id="passMissionList"></div>
       </div>
 
+      <!-- Hier erscheinen die Battlepass-Belohnungen. -->
       <div class="pass-track" id="battlepassTrack"></div>
     </section>
 
+    <!-- Shop und Inventar werden ebenfalls dynamisch mit JavaScript gefuellt. -->
     <section class="box shop">
       <h2>Shop & Inventar</h2>
       <div class="item-list" id="itemList"></div>
     </section>
 
+    <!-- Erfolge/Badges des Spielers. -->
     <section class="box achievements">
       <h2>Erfolge</h2>
       <div class="badge-list" id="achievementList"></div>
     </section>
   </main>
 
+  <!-- Verstecktes Fenster fuer Minispiele. Es wird nur angezeigt, wenn es gebraucht wird. -->
   <div class="modal hidden" id="gameModal" aria-hidden="true">
     <section class="modal-card box" role="dialog" aria-modal="true" aria-labelledby="gameTitle">
       <div class="modal-head">
@@ -150,6 +168,7 @@
     </section>
   </div>
 
+  <!-- Bindet die JavaScript-Datei ein. Dort steckt die Spiellogik. -->
   <script src="script.js"></script>
 </body>
 </html>
